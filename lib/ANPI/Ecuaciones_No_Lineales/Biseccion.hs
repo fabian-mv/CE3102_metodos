@@ -4,6 +4,7 @@ module ANPI.Ecuaciones_No_Lineales.Biseccion (Biseccion (..))
 where 
 
 import ANPI.Base
+import ANPI.Ecuaciones_No_Lineales.Base
 
 data Biseccion = Biseccion
   { a :: Double

@@ -4,6 +4,7 @@ module ANPI.Ecuaciones_No_Lineales.Secante (Secante (..))
 where
 
 import ANPI.Base
+import ANPI.Ecuaciones_No_Lineales.Base
 
 data Secante = Secante
   { x_k   :: Double

@@ -1,24 +1,18 @@
 {-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
 
 module ANPI.Base
-( Criterio
-, Iteracion (..)
+( Iteracion (..)
 , Param (..)
 , Solucion (..)
 , solucion
-, denom
 ) where
 
-import Numeric.LinearAlgebra
 
 data Param o = Param
   { objetivo  :: o
   , tol       :: Double
   , iterMax   :: Int
   }
-
-
-type Criterio = Double -> Double
 
 
 data Iteracion s = Iteracion
@@ -48,9 +42,3 @@ solucion param aprox_0 = head . dropWhile (not . parar) . iterate sucesor $
         }
 
   objetivo' = objetivo param
-
-denom :: Criterio
-denom x =
-  if   abs x > peps
-  then x
-  else error "Denominador se anula."

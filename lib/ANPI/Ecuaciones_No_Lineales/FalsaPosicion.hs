@@ -4,6 +4,7 @@ module ANPI.Ecuaciones_No_Lineales.FalsaPosicion (FalsaPosicion (..))
 where
 
 import ANPI.Base
+import ANPI.Ecuaciones_No_Lineales.Base
 
 data FalsaPosicion = FalsaPosicion
   { a :: Double

@@ -2,15 +2,10 @@
 
 module ANPI.Ecuaciones_No_Lineales.NewtonRaphson
 ( NewtonRaphson (..)
-, Derivable (..)
 ) where
 
 import ANPI.Base
-
-data Derivable = Derivable
-  { f  :: Criterio
-  , f' :: Criterio
-  }
+import ANPI.Ecuaciones_No_Lineales.Base
 
 data NewtonRaphson = NewtonRaphson
   { x_k :: Double
