@@ -25,20 +25,20 @@ library
     exposed-modules:
         ANPI.Matriz,
         ANPI.Ecuaciones_No_Lineales.Biseccion,
-	ANPI.Ecuaciones_No_Lineales.NewtonRapshon,
-	ANPI.Ecuaciones_No_Lineales.Secante,
-	ANPI.Ecuaciones_No_Lineales.FalsaPosicion,
-	ANPI.Ecuaciones_No_Lineales.Steffensen,
-	ANPI.Sistemas_De_Ecuaciones.Jacobi,
-	ANPI.Sistemas_De_Ecuaciones.GaussSeidel,
-	ANPI.Sistemas_De_Ecuaciones.Thomas,
-	ANPI.Sistemas_De_Ecuaciones.Pseudoinversa,
-	ANPI.Sistemas_De_Ecuaciones.GradienteConjugado
-    hs-source-dirs:   lib
-    default-language: Haskell2010
-    build-depends:
-        base     ^>=4.14.3.0,
-        hmatrix  ^>=0.20.2
+        ANPI.Ecuaciones_No_Lineales.NewtonRapshon,
+        ANPI.Ecuaciones_No_Lineales.Secante,
+        ANPI.Ecuaciones_No_Lineales.FalsaPosicion,
+        ANPI.Ecuaciones_No_Lineales.Steffensen,
+        ANPI.Sistemas_De_Ecuaciones.Jacobi,
+        ANPI.Sistemas_De_Ecuaciones.GaussSeidel,
+        ANPI.Sistemas_De_Ecuaciones.Thomas,
+        ANPI.Sistemas_De_Ecuaciones.Pseudoinversa,
+        ANPI.Sistemas_De_Ecuaciones.GradienteConjugado
+   hs-source-dirs:   lib
+   default-language: Haskell2010
+   build-depends:
+       base     ^>=4.14.3.0,
+       hmatrix  ^>=0.20.2
 
 executable run_methods
     main-is:          RunMethods.hs
