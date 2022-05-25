@@ -1,4 +1,12 @@
-module ANPI.Base (Iteracion (..), Param (..), Solucion (..), solucion) where
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+
+module ANPI.Base
+( Criterio
+, Iteracion (..)
+, Param (..)
+, Solucion (..)
+, solucion
+) where
 
 data Param o = Param
   { objetivo  :: o
@@ -17,21 +25,23 @@ data Iteracion s = Iteracion
   } deriving Show
 
 
-class Solucion o s where
+class Solucion o s | s -> o where
   error_k :: o -> s -> Double
   siguiente :: o -> s -> s
 
 
 solucion :: Solucion o s => Param o -> s -> Iteracion s
 solucion param aprox_0 = head . dropWhile (not . parar) . iterate sucesor $
-  Iteracion { k = 0, aprox_k = aprox_0, err = error_k param aprox_0 } where
+  Iteracion { k = 0, aprox_k = aprox_0, err = error_k objetivo' aprox_0 } where
 
-  parar iter = k iter >= iterMax param || error_k param (aprox_k iter) < tol param
+  parar iter = k iter >= iterMax param || error_k objetivo' (aprox_k iter) < tol param
   
   sucesor iter =
-    let aprox_km1 = siguiente param iter
+    let aprox_km1 = siguiente objetivo' (aprox_k iter)
     in  Iteracion
         { k       = k iter + 1
         , aprox_k = aprox_km1
-        , err     = error_k param aprox_km1
+        , err     = error_k objetivo' aprox_km1
         }
+
+  objetivo' = objetivo param
