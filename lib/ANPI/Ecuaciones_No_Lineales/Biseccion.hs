@@ -17,6 +17,7 @@ instance Solucion Criterio Biseccion where
     { a = if bolzano then a aprox else x
     , b = if bolzano then x       else b aprox
     } where
+
     x       = x_k aprox
     bolzano = (signum . criterio . a $ aprox) /= signum (criterio x)
 

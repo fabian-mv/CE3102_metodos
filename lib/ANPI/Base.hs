@@ -4,9 +4,11 @@ module ANPI.Base
 ( Iteracion (..)
 , Param (..)
 , Solucion (..)
+, denom
 , solucion
 ) where
 
+import Numeric.LinearAlgebra
 
 data Param o = Param
   { objetivo  :: o
@@ -25,6 +27,13 @@ data Iteracion s = Iteracion
 class Solucion o s | s -> o where
   error_k :: o -> s -> Double
   siguiente :: o -> s -> s
+
+
+denom :: Double -> Double
+denom x =
+  if   abs x > peps
+  then x
+  else error "Denominador se anula."
 
 
 solucion :: Solucion o s => Param o -> s -> Iteracion s
