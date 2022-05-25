@@ -6,7 +6,10 @@ module ANPI.Base
 , Param (..)
 , Solucion (..)
 , solucion
+, denom
 ) where
+
+import Numeric.LinearAlgebra
 
 data Param o = Param
   { objetivo  :: o
@@ -45,3 +48,9 @@ solucion param aprox_0 = head . dropWhile (not . parar) . iterate sucesor $
         }
 
   objetivo' = objetivo param
+
+denom :: Criterio
+denom x =
+  if   abs x > peps
+  then x
+  else error "Denominador se anula."

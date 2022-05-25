@@ -6,7 +6,6 @@ module ANPI.Ecuaciones_No_Lineales.NewtonRaphson
 ) where
 
 import ANPI.Base
-import Numeric.LinearAlgebra
 
 data Derivable = Derivable
   { f  :: Criterio
@@ -20,11 +19,7 @@ data NewtonRaphson = NewtonRaphson
 instance Solucion Derivable NewtonRaphson where
   error_k   func aprox = abs . f func . x_k $ aprox
   siguiente func aprox = NewtonRaphson
-    { x_k = x_km1 - f func x_km1 / denom } where
+    { x_k = x_km1 - f func x_km1 / denom d } where
     
-    denom = if   denom' > peps
-            then denom'
-            else error "Denominador se anula."
-    
-    denom' = f' func x_km1
-    x_km1  = x_k aprox
+    d     = f' func x_km1
+    x_km1 = x_k aprox

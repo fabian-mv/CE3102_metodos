@@ -4,7 +4,6 @@ module ANPI.Ecuaciones_No_Lineales.FalsaPosicion (FalsaPosicion (..))
 where
 
 import ANPI.Base
-import Numeric.LinearAlgebra
 
 data FalsaPosicion = FalsaPosicion
   { a :: Double
@@ -17,14 +16,11 @@ instance Solucion Criterio FalsaPosicion where
     { a = if bolzano then a aprox else x
     , b = if bolzano then x       else b aprox
     } where
+
     x       = x_k criterio aprox
     bolzano = (signum . criterio . a $ aprox) /= signum (criterio x)
 
-x_k criterio aprox = b' - (b' - a') * criterio b' / denom where
-  denom = if   denom' > peps
-          then denom'
-          else error "Denominador se anula."
- 
-  denom' = criterio b' - criterio a'
-  b'     = b aprox
-  a'     = a aprox
+x_k criterio aprox = b' - (b' - a') * criterio b' / denom d where
+  d  = criterio b' - criterio a'
+  b' = b aprox
+  a' = a aprox
