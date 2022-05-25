@@ -25,7 +25,7 @@ library
     exposed-modules:
         ANPI.Matriz,
         ANPI.Ecuaciones_No_Lineales.Biseccion,
-        ANPI.Ecuaciones_No_Lineales.NewtonRapshon,
+        ANPI.Ecuaciones_No_Lineales.NewtonRaphson,
         ANPI.Ecuaciones_No_Lineales.Secante,
         ANPI.Ecuaciones_No_Lineales.FalsaPosicion,
         ANPI.Ecuaciones_No_Lineales.Steffensen,
