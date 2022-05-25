@@ -11,7 +11,7 @@ data Biseccion = Biseccion
   } deriving Show
 
 instance Solucion Criterio Biseccion where
-  error_k criterio aprox = abs . criterio . x_k $ aprox
+  error_k   criterio aprox = abs . criterio . x_k $ aprox
   siguiente criterio aprox = Biseccion
     { a = if bolzano then a aprox else x
     , b = if bolzano then x       else b aprox

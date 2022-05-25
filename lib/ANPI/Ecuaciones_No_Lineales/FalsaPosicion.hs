@@ -12,7 +12,7 @@ data FalsaPosicion = FalsaPosicion
   } deriving Show
 
 instance Solucion Criterio FalsaPosicion where
-  error_k criterio aprox = abs . criterio . x_k criterio $ aprox
+  error_k   criterio aprox = abs . criterio . x_k criterio $ aprox
   siguiente criterio aprox = FalsaPosicion
     { a = if bolzano then a aprox else x
     , b = if bolzano then x       else b aprox
