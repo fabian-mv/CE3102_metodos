@@ -4,12 +4,10 @@ import ANPI.Base
 import ANPI.Ecuaciones_No_Lineales.Base
 import ANPI.Sistemas_De_Ecuaciones.Base
 
-import ANPI.Sistemas_De_Ecuaciones.Jacobi
+import ANPI.Sistemas_De_Ecuaciones.Pseudoinversa
 
 main :: IO ()
-main = print $ solucion param x_0 where
-  
-  x_0 = Jacobi { x_k = 4 |> [0..] }
+main = print $ solucion param (x_0 (objetivo param)) where
 
   param = Param
     { tol      = 1e-8
