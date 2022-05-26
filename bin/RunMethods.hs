@@ -2,7 +2,9 @@ import ANPI.Base
 import ANPI.Ecuaciones_No_Lineales.Base
 import ANPI.Sistemas_De_Ecuaciones.Base
 
-import ANPI.Ecuaciones_No_Lineales.GaussSeidel
+import ANPI.Sistemas_De_Ecuaciones.GaussSeidel
+
+import Numeric.LinearAlgebra
 
 main :: IO ()
 main = print $ solucion param x_0 where
@@ -13,11 +15,11 @@ main = print $ solucion param x_0 where
     { tol      = 1e-8
     , iterMax  = 1000
     , objetivo = Sistema
-        { b = vector [4, -7, 13, -13]
+        { b = vector [6, 7, 7, 6]
         , a = (4><4)
-            [ 1,  1, -1,   3
-            , 0, -1, -1,  -5
-            , 0,  0,  3,  13
-            , 0,  0,  0, -13]
+            [ 5, 1, 0, 0
+            , 1, 5, 1, 0
+            , 0, 1, 5, 1
+            , 0, 0, 1, 5]
         }
     }
