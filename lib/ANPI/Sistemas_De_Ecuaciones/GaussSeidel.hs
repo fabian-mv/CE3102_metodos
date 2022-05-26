@@ -17,9 +17,9 @@ newtype GaussSeidel = GaussSeidel
 instance Solucion Sistema GaussSeidel where
   error_k   sistema aprox = norm_2 $ a sistema #> x_k aprox - b sistema
   siguiente sistema aprox = GaussSeidel
-    { x_k = -(sustitucionAdelante Sistema{a = ld, b = u #> x_k aprox }) +
-    sustitucionAdelante Sistema{a = ld, b = b sistema } } where
+    { x_k = sol ld (b sistema) - sol ld (u #> x_k aprox) } where
       (ld, u) = (ldu . a) sistema
+      sol a b = sustitucionAdelante Sistema { a = a, b = b }
 
 
 sustitucionAdelante :: Sistema -> Vector R

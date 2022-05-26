@@ -7,7 +7,7 @@ module ANPI.Ecuaciones_No_Lineales.NewtonRaphson
 import ANPI.Base
 import ANPI.Ecuaciones_No_Lineales.Base
 
-data NewtonRaphson = NewtonRaphson
+newtype NewtonRaphson = NewtonRaphson
   { x_k :: Double
   } deriving Show
 
