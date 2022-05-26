@@ -24,4 +24,4 @@ instance Solucion Sistema Pseudoinversa where
 
 x_0 :: Sistema -> Pseudoinversa
 x_0 sistema = Pseudoinversa
-  { x_k = (1 / (denom . (^ 2) . norm_2 . a $ sistema)) `scale` tr' (a sistema) }
+  { x_k = (recip . denom . (^ 2) . norm_2 . a $ sistema) `scale` tr' (a sistema) }

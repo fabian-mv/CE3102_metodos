@@ -1,13 +1,13 @@
-import Numeric.LinearAlgebra
-
 import ANPI.Base
 import ANPI.Ecuaciones_No_Lineales.Base
 import ANPI.Sistemas_De_Ecuaciones.Base
 
-import ANPI.Sistemas_De_Ecuaciones.Pseudoinversa
+import ANPI.Ecuaciones_No_Lineales.GaussSeidel
 
 main :: IO ()
-main = print $ solucion param (x_0 (objetivo param)) where
+main = print $ solucion param x_0 where
+  
+  x_0 = GaussSeidel { x_k = 4 |> [0,0..] }
 
   param = Param
     { tol      = 1e-8
