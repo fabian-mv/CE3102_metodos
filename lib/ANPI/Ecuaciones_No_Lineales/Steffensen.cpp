@@ -2,28 +2,17 @@
 #include <cstdio>
 
 #include "Steffensen.h"
+
 extern "C"
 {
-    Solucion steffensen(Ld (*f)(Ld), Ld x0, Ld tol, int itermax)
+    double err_steffensen(double (*f)(void*, double), void *arg, double xk)
     {
-        Ld xk{x0};
-        Ld error{0};
-        Ld fxk{0};
-        int k{itermax};
-        for (int i = 0; i < itermax; i++)
-        {
-            fxk = f(xk);
-            xk = xk - (fxk * fxk) / (f(xk + fxk) - fxk);
-            error = std::fabs(f(xk));
-            if (error < tol)
-            {
-                k = i;
-                break;
-            }
-        }
-        return Solucion{
-            .x = xk,
-            .error = error,
-            .k = k};
+        return std::fabs(f(arg, xk));
+    }
+
+    double iter_steffensen(double (*f)(void*, double), void *arg, double xk)
+    {
+        auto fxk = f(arg, xk);
+        return xk - (fxk * fxk) / (f(arg, xk + fxk) - fxk);
     }
 }

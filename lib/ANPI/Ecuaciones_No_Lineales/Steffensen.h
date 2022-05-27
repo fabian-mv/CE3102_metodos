@@ -1,20 +1,16 @@
 #ifndef STEFFENSEN_H
 #define STEFFENSEN_H
 
-#include <cmath>
-#include <cstdio>
-
+#ifdef __cplusplus
 extern "C"
 {
-	typedef long double Ld;
+#endif
 
-	typedef struct Solucion
-	{
-		Ld x;
-		Ld error;
-		int k;
-	} Solucion;
-	Solucion steffensen(Ld (*f)(Ld), Ld x0, Ld tol, int itermax);
+    double err_steffensen(double (*f)(void*, double), void *arg, double xk);
+    double iter_steffensen(double (*f)(void*, double), void *arg, double xk);
+
+#ifdef __cplusplus
 }
+#endif
 
 #endif

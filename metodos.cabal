@@ -29,6 +29,7 @@ library
         ANPI.Ecuaciones_No_Lineales.NewtonRaphson,
         ANPI.Ecuaciones_No_Lineales.Secante,
         ANPI.Ecuaciones_No_Lineales.FalsaPosicion,
+        ANPI.Ecuaciones_No_Lineales.Steffensen,
         ANPI.Sistemas_De_Ecuaciones.Base,
         ANPI.Sistemas_De_Ecuaciones.Jacobi,
         ANPI.Sistemas_De_Ecuaciones.GaussSeidel,
@@ -37,6 +38,7 @@ library
         ANPI.Sistemas_De_Ecuaciones.GradienteConjugado
    hs-source-dirs:   lib
    default-language: Haskell2010
+   cxx-sources: lib/ANPI/Ecuaciones_No_Lineales/Steffensen.cpp
    build-depends:
        base     ^>=4.14.3.0,
        hmatrix  ^>=0.20.2
