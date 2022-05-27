@@ -13,8 +13,8 @@ version:            0.1.0.0
 
 -- The license under which the package is released.
 -- license:
-author:             Alejandro Soto
-maintainer:         alejandro@34project.org
+author:             Alejandro Soto, Fabián Montero, J. Alejandro Chavarría
+maintainer:         devnull@cluster451.org
 
 -- A copyright notice.
 -- copyright:
@@ -29,7 +29,6 @@ library
         ANPI.Ecuaciones_No_Lineales.NewtonRaphson,
         ANPI.Ecuaciones_No_Lineales.Secante,
         ANPI.Ecuaciones_No_Lineales.FalsaPosicion,
-        ANPI.Ecuaciones_No_Lineales.Steffensen,
         ANPI.Sistemas_De_Ecuaciones.Base,
         ANPI.Sistemas_De_Ecuaciones.Jacobi,
         ANPI.Sistemas_De_Ecuaciones.GaussSeidel,
