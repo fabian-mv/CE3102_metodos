@@ -18,4 +18,5 @@ int main()
 {
 	Solucion res = steffensen(problema_ejemplo, 0.6, 1e-5, 1000);
 	printf("Resultado: %.15LF \n -- Error: %.15LF \n -- iteraciones: %d \n", res.x, res.error, res.k);
+    return 0;
 }

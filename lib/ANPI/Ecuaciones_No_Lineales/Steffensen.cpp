@@ -9,7 +9,7 @@ extern "C"
         Ld xk{x0};
         Ld error{0};
         Ld fxk{0};
-        int k{0};
+        int k{itermax};
         for (int i = 0; i < itermax; i++)
         {
             fxk = f(xk);
