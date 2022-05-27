@@ -1,7 +1,7 @@
 ---
 title:
   Instituto Tecnológico de Costa Rica\endgraf\bigskip \endgraf\bigskip\bigskip\
-  Programación de Métodos Numéricos $:$ Aplicación de método de Steffenson para resolución de un problema de ingeniería \endgraf\bigskip\bigskip\bigskip\bigskip
+  Programación de Métodos Numéricos $:$ Aplicación de método de Steffensen para resolución de un problema de ingeniería \endgraf\bigskip\bigskip\bigskip\bigskip
 author:
   - Alejandro Soto Chacón, carné 2019008164
   - Fabian Montero Villalobos, carné 2016121558
@@ -10,19 +10,17 @@ author:
 date: \bigskip\bigskip\bigskip\bigskip Área Académica de\endgraf Ingeniería en Computadores \endgraf\bigskip\bigskip\ Análisis Numérico Para Ingeniería \endgraf  (CE3102) \endgraf\bigskip\bigskip Profesor Juan Pablo Soto Quirós \endgraf\vfill  Semestre I 2022
 header-includes:
   - \setlength\parindent{24pt}
-  - \usepackage{url}
-  - \usepackage{float}
-  - \floatplacement{figure}{H}
 lang: es-ES
 papersize: letter
-classoption: fleqn
 geometry: margin=1in
 fontsize: 12pt
 fontfamily: sans
+monofont: "Hack"
 linestretch: 1.15
 bibliography: bibliografia.bib
 csl: ieee.csl
-nocite: |
+nocite: | 
+    @codetobuy
 ...
 
 \maketitle
@@ -42,12 +40,12 @@ El problema consiste en el análisis de un circuito simple compuesto por un MOSF
 
 ![Estructura de un MOSFET \label{mosfet}. Obtenido de [@razavi].](mosfet.png){width=70%}
 
-En la figura \ref{mosfet} se puede ver la estructura básica de un MOSFET. En teŕminos simples, el dispositivo consiste de dos terminales fuente (source) y  drenaje (drain) cuya conexión es controlada por una tercera terminal denominada compuerta (Gate). Algunos valores que caracterizan el comportamiento general de un MOSFET son:
+En la figura \ref{mosfet} se puede ver la estructura básica de un MOSFET. En términos simples, el dispositivo consiste de dos terminales fuente (source) y  drenaje (drain) cuya conexión es controlada por una tercera terminal denominada compuerta (Gate). Algunos valores que caracterizan el comportamiento general de un MOSFET son:
 
 - $V_{TH}$: También denominada tensión térmica. Relacionada a comportamiento de los portadores de carga del semiconductor.
 - $\mu_{n}$: Movilidad de electrones en el sustrato.
 - $C_{ox}$: Capacitancia por unidad de área del óxido de la compuerta.
-- $W$: Ancho de la compuerta (distancia que separa drenador y fuente).
+- $W$: Ancho de la compuerta (distancia que separa drenaje y fuente).
 - $L$: Largo de la compuerta.
 
 ![Regiones de operación de un MOSFET \label{regiones}. Obtenido de [@razavi]](mosfet_operacion.png){width=70%}
@@ -56,7 +54,7 @@ Un transistor MOS posee distintas regiones de operación determinadas por los va
 
 $$I_D = \frac{1}{2}\mu_n C_{ox} \frac{W}{L}(V_{GS} - V_{TH})^2$$
 
-La figura \ref{regiones} muestra que el borde entre ambas regiones se encuentra cuando $V_{GS} - V_{TH}$ tienen el mismo valor que $V_{DS}$. $V_{GS}$ se refiere a la diferencia de tensión entre la compuerta y la fuente, y $V_{DS} a la diferencia entre drenador y fuente$.  
+La figura \ref{regiones} muestra que el borde entre ambas regiones se encuentra cuando $V_{GS} - V_{TH}$ tienen el mismo valor que $V_{DS}$. $V_{GS}$ se refiere a la diferencia de tensión entre la compuerta y la fuente, y $V_{DS} a la diferencia entre drenaje y fuente$.  
 
 ## El problema a resolver
 
@@ -87,7 +85,13 @@ x_{n+1} = x_n - \frac{f(x_n)^2}{f(x_n + f(x_n)) - f(x_n)x_n}
 \end{cases}
 $$
 
-```C++
+Una posible implementación computacional en `C++` es la mostrada a continuación:
+
+\scriptsize
+
+---
+
+~~~ { .cpp caption="Implementación computacional en C++ del método de Steffensen y resolución del problema planteado"}
 #include <cmath>
 #include <cstdio>
 
@@ -141,22 +145,279 @@ int main()
 {
 	Solucion res = steffensen(problema_ejemplo, 0.6, 1e-5, 1000);
 	printf("Resultado: %.15LF \n", res.x);
-    printf("-- Error: %.15LF\n", res.error);
-    printf("-- iteraciones: %d \n", res.k);
+    printf("Error: %.15LF\n", res.error);
+    printf("iteraciones: %d \n", res.k);
     return 0;
 }
+~~~
+---
 
-```
+\normalsize
 
 El resultado que el programa anterior imprime al ser ejecutado en consola es:
 
 
-```Shell
+\scriptsize
+
+~~~ { .bash}
 Resultado: 1.044863596655522 
--- Error: 0.000000130312545
--- iteraciones: 4 
-```
+Error: 0.000000130312545
+iteraciones: 4 
+~~~
+
+\normalsize
 
 La cual es el valor correcto para $V_{GS}$ de manera que el transistor pueda permanecer en saturación.
+
+## Solución con acercaminto híbrido `C++` y `Haskell`
+
+En el contexto del trabajo desarrollado, debido a que se quería poder tener acceso a todos los métodos implementados desde una biblioteca de `Haskell`, se realizaron algunas adaptaciones para integrar el código `C++`. En primer lugar, al igual que para otro métodos, la lógica de la iteración se relega a `Haskell`, mientras que las fórmulas de error y valor de siguiente iteración se mantienen en `C++`:
+
+\scriptsize
+
+---
+
+~~~ { .cpp caption="Stenffensen.h"}
+#ifndef STEFFENSEN_H
+#define STEFFENSEN_H
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+    double err_steffensen(double (*f)(double), double xk);
+    double iter_steffensen(double (*f)(double), double xk);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
+~~~
+
+---
+
+\normalsize
+
+\scriptsize
+
+---
+
+~~~ { .cpp caption="Stenffensen.cpp"}
+#include <cmath>
+#include <cstdio>
+
+#include "Steffensen.h"
+
+extern "C"
+{
+    double err_steffensen(double (*f)(double), double xk)
+    {
+        return std::fabs(f(xk));
+    }
+
+    double iter_steffensen(double (*f)(double), double xk)
+    {
+        auto fxk = f(xk);
+        return xk - (fxk * fxk) / (f(xk + fxk) - fxk);
+    }
+}
+~~~
+
+---
+
+\normalsize
+
+Como puede observarse, en la parte de `C++` se hace uso de "extern", lo que permite definir una interfaz utilizable desde `Haskell`. Antes de hacer uso de la interfaz, es necesario mostrar las definiciones base que se utilizan en el programa. Estas definiciones base se muestran en los archivos `Base.hs`, uno que se encuentra a nivel de biblioteca y otro que es dedicado para los métodos de resolución de ecuaciones no lineales en el contexto del trabajo en general. 
+
+\scriptsize
+
+---
+
+~~~ { .haskell caption="Base.hs"}
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+
+module ANPI.Base
+( Iteracion (..)
+, Param (..)
+, Solucion (..)
+, denom
+, solucion
+) where
+
+import Numeric.LinearAlgebra
+
+data Param o = Param
+  { objetivo  :: o
+  , tol       :: Double
+  , iterMax   :: Int
+  }
+
+
+data Iteracion s = Iteracion
+  { k        :: Int
+  , aprox_k  :: s
+  , err      :: Double
+  } deriving Show
+
+
+class Solucion o s | s -> o where
+  error_k :: o -> s -> Double
+  siguiente :: o -> s -> s
+
+
+denom :: Double -> Double
+denom x =
+  if   abs x > peps
+  then x
+  else error "Denominador se anula."
+
+
+solucion :: Solucion o s => Param o -> s -> Iteracion s
+solucion param aprox_0 = head . dropWhile (not . parar) . iterate sucesor $
+  Iteracion { k = 0, aprox_k = aprox_0, err = error_k objetivo' aprox_0 } where
+
+  parar iter = k iter >= iterMax param || error_k objetivo' (aprox_k iter) < tol param
+  
+  sucesor iter =
+    let aprox_km1 = siguiente objetivo' (aprox_k iter)
+    in  Iteracion
+        { k       = k iter + 1
+        , aprox_k = aprox_km1
+        , err     = error_k objetivo' aprox_km1
+        }
+
+  objetivo' = objetivo param
+~~~
+
+\normalsize
+
+---
+
+\scriptsize
+
+---
+
+~~~ { .haskell caption="Ecuaciones_No_Lineales/Base.hs"}
+module ANPI.Ecuaciones_No_Lineales.Base
+( Criterio
+, Derivable (..)
+) where
+
+import Numeric.LinearAlgebra
+
+type Criterio = Double -> Double
+
+data Derivable = Derivable
+  { f  :: Criterio
+  , f' :: Criterio
+  }
+~~~
+
+---
+
+\normalsize
+
+Posteriormente, se agrega el código necesario para "conectarse" con el lado de `C++` desde Haskell e integrar el método de Stenffensen a la biblioteca como un todo. 
+
+\scriptsize
+
+---
+
+~~~ { .haskell caption="Ecuaciones_No_Lineales/Steffensen.hs"}
+{-# LANGUAGE TypeSynonymInstances, FlexibleInstances, MultiParamTypeClasses, CApiFFI #-}
+
+module ANPI.Ecuaciones_No_Lineales.Steffensen
+( Steffensen (..)
+, withForeign
+) where 
+
+import Foreign.C.Types
+import Foreign.Ptr
+
+import ANPI.Base
+import ANPI.Ecuaciones_No_Lineales.Base
+
+foreign import capi "Steffensen.h err_steffensen" errSteffensen
+  :: FunPtr Criterio -> CDouble -> CDouble
+
+foreign import capi "Steffensen.h iter_steffensen" iterSteffensen
+  :: FunPtr Criterio -> CDouble -> CDouble
+
+data Steffensen = Steffensen 
+  { x_k :: Double
+  } deriving Show
+
+withForeign :: Criterio -> (FunPtr Criterio -> IO a) -> IO a
+withForeign criterio operacion = do
+  ptr <- wrapCriterio criterio
+  salida <- operacion ptr
+  freeHaskellFunPtr ptr
+  return salida
+
+instance Solucion (FunPtr Criterio) Steffensen where
+  error_k criterio aprox =
+    let CDouble valor = errSteffensen criterio (CDouble (x_k aprox))
+    in  valor
+
+  siguiente criterio aprox =
+    let CDouble valor = iterSteffensen criterio (CDouble (x_k aprox))
+    in  Steffensen { x_k = valor }
+
+foreign import ccall "wrapper" wrapCriterio :: Criterio -> IO (FunPtr Criterio)
+~~~
+
+---
+
+\normalsize
+
+Finalmente, podemos hacer uso del método implementado desde `Haskell`.
+
+\scriptsize
+
+---
+
+~~~ {.haskell caption="RunExample.hs"}
+import ANPI.Base
+import ANPI.Ecuaciones_No_Lineales.Base
+import ANPI.Ecuaciones_No_Lineales.Steffensen
+
+problemaEjemplo :: Double -> Double
+problemaEjemplo vgs =
+  vdd - (rd / 2) * un_cox * (w / l) * (vgs - vth)^2 - vgs + vth
+  where
+    rd  = 5e3
+    vdd = 1.8
+    w   = 2.0
+    l   = 0.18
+    vth    = 0.4
+    un_cox = 100e-6
+
+main :: IO ()
+main = withForeign problemaEjemplo $ \f -> print $ solucion (param f) x_0 where
+  x_0     = Steffensen { x_k = 0.6 }
+  param f = Param
+    { tol      = 1e-5
+    , iterMax  = 1000
+    , objetivo = f
+    }
+~~~
+
+---
+
+\normalsize
+
+El resultado obtenido es el mismo:
+
+\scriptsize 
+
+~~~ { .bash}
+Resultado: 1.044863596655522 
+Error: 0.000000130312545
+iteraciones: 4 
+~~~
+
+\normalsize
 
 # Referencias
