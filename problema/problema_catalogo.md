@@ -408,14 +408,12 @@ main = withForeign problemaEjemplo $ \f -> print $ solucion (param f) x_0 where
 
 \normalsize
 
-El resultado obtenido es el mismo:
+El resultado obtenido es el mismo, aunque ahora el método está disponible como parte de una biblioteca completa:
 
 \scriptsize 
 
 ~~~ { .bash}
-Resultado: 1.044863596655522 
-Error: 0.000000130312545
-iteraciones: 4 
+Iteracion {k = 5, aprox_k = Steffensen {x_k = 1.0448635966555222}, err = 1.3031254464390685e-7}
 ~~~
 
 \normalsize
