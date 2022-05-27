@@ -5,14 +5,14 @@
 
 extern "C"
 {
-    double err_steffensen(double (*f)(void*, double), void *arg, double xk)
+    double err_steffensen(double (*f)(double), double xk)
     {
-        return std::fabs(f(arg, xk));
+        return std::fabs(f(xk));
     }
 
-    double iter_steffensen(double (*f)(void*, double), void *arg, double xk)
+    double iter_steffensen(double (*f)(double), double xk)
     {
-        auto fxk = f(arg, xk);
-        return xk - (fxk * fxk) / (f(arg, xk + fxk) - fxk);
+        auto fxk = f(xk);
+        return xk - (fxk * fxk) / (f(xk + fxk) - fxk);
     }
 }

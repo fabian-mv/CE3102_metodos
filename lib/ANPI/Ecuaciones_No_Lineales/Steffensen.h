@@ -6,8 +6,8 @@ extern "C"
 {
 #endif
 
-    double err_steffensen(double (*f)(void*, double), void *arg, double xk);
-    double iter_steffensen(double (*f)(void*, double), void *arg, double xk);
+    double err_steffensen(double (*f)(double), double xk);
+    double iter_steffensen(double (*f)(double), double xk);
 
 #ifdef __cplusplus
 }

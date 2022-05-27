@@ -1,24 +1,40 @@
 {-# LANGUAGE TypeSynonymInstances, FlexibleInstances, MultiParamTypeClasses, CApiFFI #-}
 
-module ANPI.Ecuaciones_No_Lineales.Steffensen (Steffensen (..)) where 
+module ANPI.Ecuaciones_No_Lineales.Steffensen
+( Steffensen (..)
+, withForeign
+) where 
 
 import Foreign.C.Types
 import Foreign.Ptr
-import Foreign.StablePtr
 
 import ANPI.Base
 import ANPI.Ecuaciones_No_Lineales.Base
 
 foreign import capi "Steffensen.h err_steffensen" errSteffensen
-  :: FunPtr (StablePtr Criterio -> CDouble -> CDouble)
-  -> StablePtr Criterio -> CDouble -> CDouble
+  :: FunPtr Criterio -> CDouble -> CDouble
 
 foreign import capi "Steffensen.h iter_steffensen" iterSteffensen
-  :: FunPtr (StablePtr Criterio -> CDouble -> CDouble)
-  -> StablePtr Criterio -> CDouble -> CDouble
+  :: FunPtr Criterio -> CDouble -> CDouble
 
-data Steffensen = Steffensen deriving Show
+data Steffensen = Steffensen 
+  { x_k :: Double
+  } deriving Show
 
-instance Solucion Criterio Steffensen where
-  error_k   criterio aprox = error "TODO"
-  siguiente criterio aprox = Steffensen
+withForeign :: Criterio -> (FunPtr Criterio -> IO a) -> IO a
+withForeign criterio operacion = do
+  ptr <- wrapCriterio criterio
+  salida <- operacion ptr
+  freeHaskellFunPtr ptr
+  return salida
+
+instance Solucion (FunPtr Criterio) Steffensen where
+  error_k criterio aprox =
+    let CDouble valor = errSteffensen criterio (CDouble (x_k aprox))
+    in  valor
+
+  siguiente criterio aprox =
+    let CDouble valor = iterSteffensen criterio (CDouble (x_k aprox))
+    in  Steffensen { x_k = valor }
+
+foreign import ccall "wrapper" wrapCriterio :: Criterio -> IO (FunPtr Criterio)
