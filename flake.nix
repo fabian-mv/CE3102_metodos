@@ -10,19 +10,37 @@
       defaultApp = self.apps."${system}".run_methods;
 
       packages.metodos = let
-        drv = { lib, mkDerivation, base, criterion, hmatrix, pretty-simple }:
+        version = "0.69.0.0";
+
+        drv =
+          { lib, callPackage, mkDerivation, armadillo, base
+          , criterion, hmatrix, config, pretty-simple }:
           mkDerivation {
             pname = "metodos";
-            version = "0.69.0.0";
+            inherit version;
             license = lib.licenses.gpl3;
 
             src = ./.;
 
             isLibrary = true;
             isExecutable = true;
+            doHaddock = false;
+            doHoogle = false;
 
+            libraryPkgconfigDepends = [ armadillo (callPackage metodospp {}) ];
             libraryHaskellDepends = [ base hmatrix ];
             executableHaskellDepends = [ base criterion hmatrix pretty-simple ];
+          };
+
+        metodospp = { lib, armadillo, cmake, stdenv }:
+          stdenv.mkDerivation {
+            pname = "metodospp";
+            inherit version;
+
+            src = ./lib/c++;
+
+            nativeBuildInputs = [ cmake ];
+            buildInputs = [ armadillo ];
           };
       in pkgs.haskellPackages.callPackage drv {};
 

@@ -36,9 +36,12 @@ library
         ANPI.Sistemas_De_Ecuaciones.Thomas,
         ANPI.Sistemas_De_Ecuaciones.Pseudoinversa,
         ANPI.Sistemas_De_Ecuaciones.GradienteConjugado
-   hs-source-dirs:   lib
-   default-language: Haskell2010
-   cxx-sources: lib/ANPI/Ecuaciones_No_Lineales/Steffensen.cpp
+
+   cxx-sources:       lib/ANPI/Ecuaciones_No_Lineales/Steffensen.cpp
+   pkgconfig-depends: metodospp
+   hs-source-dirs:    lib
+   default-language:  Haskell2010
+
    build-depends:
        base    ^>=4.14.3.0,
        deepseq ^>=1.4.4.0,
