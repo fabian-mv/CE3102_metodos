@@ -1,4 +1,5 @@
-{-# LANGUAGE TypeSynonymInstances, FlexibleInstances, MultiParamTypeClasses #-}
+{-# LANGUAGE TypeSynonymInstances, FlexibleInstances
+  , MultiParamTypeClasses, DeriveGeneric, DeriveAnyClass #-}
 
 {-
   Este módulo contiene la funcionalidad del método iterativo Bisección.
@@ -11,8 +12,13 @@
 {-
   Exportación del tipo Bisección para que pueda ser utilizado afuera del módulo.
 -}
-module ANPI.Ecuaciones_No_Lineales.Biseccion (Biseccion (..))
-where 
+module ANPI.Ecuaciones_No_Lineales.Biseccion
+( Biseccion (..)
+) where 
+
+import GHC.Generics (Generic)
+
+import Control.DeepSeq
 
 import ANPI.Base
 import ANPI.Ecuaciones_No_Lineales.Base
@@ -34,7 +40,7 @@ import ANPI.Ecuaciones_No_Lineales.Base
 data Biseccion = Biseccion
   { a :: Double
   , b :: Double
-  } deriving Show
+  } deriving (Show, Generic, NFData)
 
 
 {-

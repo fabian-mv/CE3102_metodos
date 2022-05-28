@@ -1,8 +1,10 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, DeriveGeneric, DeriveAnyClass #-}
 
-module ANPI.Sistemas_De_Ecuaciones.Pseudoinversa (Pseudoinversa (..), x_0)
-where
+module ANPI.Sistemas_De_Ecuaciones.Pseudoinversa (Pseudoinversa (..), x_0) where
 
+import GHC.Generics (Generic)
+
+import Control.DeepSeq
 import Numeric.LinearAlgebra
 import qualified Numeric.LinearAlgebra as LA
 
@@ -12,7 +14,7 @@ import Text.Read (Lexeme(Ident))
 
 newtype Pseudoinversa = Pseudoinversa
   { x_k :: Matrix R
-  } deriving Show
+  } deriving (Show, Generic, NFData)
 
 instance Solucion Sistema Pseudoinversa where
   error_k sistema aprox = norm_2 (x_kmas1' - x_k') / (denom . norm_2) x_kmas1' where

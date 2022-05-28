@@ -1,7 +1,13 @@
-{-# LANGUAGE TypeSynonymInstances, FlexibleInstances, MultiParamTypeClasses #-}
+{-# LANGUAGE TypeSynonymInstances, FlexibleInstances
+  , MultiParamTypeClasses, DeriveGeneric, DeriveAnyClass #-}
 
-module ANPI.Ecuaciones_No_Lineales.Secante (Secante (..))
-where
+module ANPI.Ecuaciones_No_Lineales.Secante
+( Secante (..)
+) where
+
+import GHC.Generics (Generic)
+
+import Control.DeepSeq
 
 import ANPI.Base
 import ANPI.Ecuaciones_No_Lineales.Base
@@ -9,7 +15,7 @@ import ANPI.Ecuaciones_No_Lineales.Base
 data Secante = Secante
   { x_k   :: Double
   , x_km1 :: Double
-  } deriving Show
+  } deriving (Show, Generic, NFData)
 
 instance Solucion Criterio Secante where
   error_k   criterio aprox = abs . criterio . x_k $ aprox

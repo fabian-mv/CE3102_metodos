@@ -1,8 +1,10 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, DeriveGeneric, DeriveAnyClass #-}
 
-module ANPI.Sistemas_De_Ecuaciones.Jacobi (Jacobi (..))
-where
+module ANPI.Sistemas_De_Ecuaciones.Jacobi (Jacobi (..)) where
 
+import GHC.Generics (Generic)
+
+import Control.DeepSeq
 import Numeric.LinearAlgebra
 
 import ANPI.Base
@@ -10,7 +12,7 @@ import ANPI.Sistemas_De_Ecuaciones.Base
 
 newtype Jacobi = Jacobi
   { x_k :: Vector R
-  } deriving Show
+  } deriving (Show, Generic, NFData)
 
 instance Solucion Sistema Jacobi where
   error_k   sistema aprox = norm_2 (a sistema #> x_k aprox - b sistema)

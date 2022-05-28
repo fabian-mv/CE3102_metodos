@@ -1,4 +1,5 @@
-{-# LANGUAGE TypeSynonymInstances, FlexibleInstances, MultiParamTypeClasses #-}
+{-# LANGUAGE TypeSynonymInstances, FlexibleInstances
+  , MultiParamTypeClasses, DeriveGeneric, DeriveAnyClass #-}
 
 {-
   Este módulo contiene la funcionalidad del método iterativo Falsa Posición.
@@ -12,8 +13,13 @@
   Exportación del tipo FalsaPosicion para que pueda ser utilizado afuera
   del módulo.
 -}
-module ANPI.Ecuaciones_No_Lineales.FalsaPosicion (FalsaPosicion (..))
-where
+module ANPI.Ecuaciones_No_Lineales.FalsaPosicion
+( FalsaPosicion (..)
+) where
+
+import GHC.Generics (Generic)
+
+import Control.DeepSeq
 
 import ANPI.Base
 import ANPI.Ecuaciones_No_Lineales.Base
@@ -35,7 +41,7 @@ import ANPI.Ecuaciones_No_Lineales.Base
 data FalsaPosicion = FalsaPosicion
   { a :: Double
   , b :: Double
-  } deriving Show
+  } deriving (Show, Generic, NFData)
 
 
 {-

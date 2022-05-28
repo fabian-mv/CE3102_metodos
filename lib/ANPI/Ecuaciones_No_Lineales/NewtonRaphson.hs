@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, DeriveGeneric, DeriveAnyClass #-}
 
 {-
   Este módulo contiene la funcionalidad del método iterativo Newton Raphson.
@@ -15,6 +15,10 @@
 module ANPI.Ecuaciones_No_Lineales.NewtonRaphson
 ( NewtonRaphson (..)
 ) where
+
+import GHC.Generics (Generic)
+
+import Control.DeepSeq
 
 import ANPI.Base
 import ANPI.Ecuaciones_No_Lineales.Base
@@ -33,7 +37,7 @@ import ANPI.Ecuaciones_No_Lineales.Base
 -}
 newtype NewtonRaphson = NewtonRaphson
   { x_k :: Double
-  } deriving Show
+  } deriving (Show, Generic, NFData)
 
 
 {-
