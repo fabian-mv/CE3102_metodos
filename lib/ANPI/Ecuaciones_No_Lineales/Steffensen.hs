@@ -11,10 +11,10 @@ import Foreign.Ptr
 import ANPI.Base
 import ANPI.Ecuaciones_No_Lineales.Base
 
-foreign import capi "Steffensen.h err_steffensen" errSteffensen
+foreign import capi "steffensen.h err_steffensen" errSteffensen
   :: FunPtr Criterio -> CDouble -> CDouble
 
-foreign import capi "Steffensen.h iter_steffensen" iterSteffensen
+foreign import capi "steffensen.h iter_steffensen" iterSteffensen
   :: FunPtr Criterio -> CDouble -> CDouble
 
 data Steffensen = Steffensen 

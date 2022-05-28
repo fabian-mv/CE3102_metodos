@@ -11,7 +11,7 @@ else()
 	include_directories(${ARMADILLO_INCLUDE_DIRS})
 endif()
 
-add_library(metodospp src/thomas.cpp src/gradiente_conjugado.cpp)
+add_library(metodospp src/thomas.cpp src/gradiente_conjugado.cpp src/steffensen.cpp)
 target_include_directories(metodospp PUBLIC include)
 target_link_libraries(metodospp ${ARMADILLO_LIBRARIES})
 

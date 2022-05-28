@@ -1,7 +1,7 @@
 #include <cmath>
 #include <cstdio>
 
-#include "Steffensen.h"
+#include "steffensen.h"
 
 extern "C"
 {
