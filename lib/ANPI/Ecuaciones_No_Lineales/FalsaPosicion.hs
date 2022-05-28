@@ -63,7 +63,7 @@ instance Solucion Criterio FalsaPosicion where
     -- Cálculo de x_k
     x       = x_k criterio aprox
     -- Dado un criterio y dos calores, determina si se cumple el teorema de Bolzano 
-    bolzano = (signum . criterio . a $ aprox) /= signum (criterio x)
+    bolzano = (signum . criterio . a) aprox /= signum (criterio x)
 
 x_k criterio aprox = b' - (b' - a') * criterio b' / denom d where
   d  = criterio b' - criterio a'

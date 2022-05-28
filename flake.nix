@@ -10,7 +10,7 @@
       defaultApp = self.apps."${system}".run_methods;
 
       packages.metodos = let
-        drv = { mkDerivation, base, hmatrix, lib, old-time }:
+        drv = { lib, mkDerivation, base, criterion, hmatrix, pretty-simple }:
           mkDerivation {
             pname = "metodos";
             version = "0.69.0.0";
@@ -21,8 +21,8 @@
             isLibrary = true;
             isExecutable = true;
 
-            libraryHaskellDepends = [ hmatrix ];
-            executableHaskellDepends = [ base old-time ];
+            libraryHaskellDepends = [ base hmatrix ];
+            executableHaskellDepends = [ base criterion hmatrix pretty-simple ];
           };
       in pkgs.haskellPackages.callPackage drv {};
 

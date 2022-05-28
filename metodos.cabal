@@ -40,8 +40,9 @@ library
    default-language: Haskell2010
    cxx-sources: lib/ANPI/Ecuaciones_No_Lineales/Steffensen.cpp
    build-depends:
-       base     ^>=4.14.3.0,
-       hmatrix  ^>=0.20.2
+       base    ^>=4.14.3.0,
+       deepseq ^>=1.4.4.0,
+       hmatrix ^>=0.20.2
 
 executable run_methods
     main-is:          RunMethods.hs
@@ -51,8 +52,10 @@ executable run_methods
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
     build-depends:
-        base ^>=4.14.3.0,
-        hmatrix ^>=0.20.2,
+        base          ^>=4.14.3.0,
+        hmatrix       ^>=0.20.2,
+        criterion     ^>=1.5.11.0,
+        pretty-simple ^>=4.0.0.0,
         metodos
 
     hs-source-dirs:   bin

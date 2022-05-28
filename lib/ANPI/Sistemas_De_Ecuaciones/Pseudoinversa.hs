@@ -15,7 +15,7 @@ newtype Pseudoinversa = Pseudoinversa
   } deriving Show
 
 instance Solucion Sistema Pseudoinversa where
-  error_k sistema aprox = norm_2 (x_kmas1' - x_k') / (denom . norm_2 $ x_kmas1') where
+  error_k sistema aprox = norm_2 (x_kmas1' - x_k') / (denom . norm_2) x_kmas1' where
     (x_k', x_kmas1') = (x_k aprox, x_k . siguiente sistema $ aprox)
 
   siguiente sistema aprox = Pseudoinversa
@@ -24,4 +24,4 @@ instance Solucion Sistema Pseudoinversa where
 
 x_0 :: Sistema -> Pseudoinversa
 x_0 sistema = Pseudoinversa
-  { x_k = (recip . denom . (^ 2) . norm_2 . a $ sistema) `scale` tr' (a sistema) }
+  { x_k = (recip . denom . (^ 2) . norm_2 . a) sistema `scale` tr' (a sistema) }

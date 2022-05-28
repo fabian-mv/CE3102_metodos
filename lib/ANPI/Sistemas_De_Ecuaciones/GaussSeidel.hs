@@ -1,17 +1,19 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, DeriveGeneric, DeriveAnyClass #-}
 
 module ANPI.Sistemas_De_Ecuaciones.GaussSeidel  (GaussSeidel (..))
 where
 
+import GHC.Generics (Generic)
+
+import Control.DeepSeq
 import Numeric.LinearAlgebra
 
 import ANPI.Sistemas_De_Ecuaciones.Base
 import ANPI.Base
-import Debug.Trace (traceShowId)
 
 newtype GaussSeidel = GaussSeidel
   { x_k :: Vector R
-  } deriving Show
+  } deriving (Show, Generic, NFData)
 
 
 instance Solucion Sistema GaussSeidel where

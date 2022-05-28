@@ -1,11 +1,10 @@
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies, DeriveGeneric, DeriveAnyClass #-}
 
 {-
   Este módulo contiene funciones y tipos que se utilizan en (casi) todos los
   demás métodos. Los métodos que lo usan, lo importan utilizando la palabra
   clave `import` seguida del nombre de este módulo: `ANPI.Base`.
 -}
-
 
 {-
   Exportación de las funciones y tipos para que puedan ser utilizadas
@@ -25,6 +24,9 @@ module ANPI.Base
 , solucion
 ) where
 
+import GHC.Generics (Generic)
+
+import Control.DeepSeq
 import Numeric.LinearAlgebra
 
 {-
@@ -56,7 +58,7 @@ data Iteracion s = Iteracion
   { k        :: Int
   , aprox_k  :: s
   , err      :: Double
-  } deriving Show
+  } deriving (Show, Generic, NFData)
 
 
 {-
