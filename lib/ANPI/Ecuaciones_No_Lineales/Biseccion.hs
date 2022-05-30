@@ -25,10 +25,13 @@ import ANPI.Ecuaciones_No_Lineales.Base
 
 
 {-
-  Algebraic Data Type que define el estado inicial del método iterarivo de la
-  Bisección.
+  Algebraic Data Type que describe el estado de cada iteración del método
+  iterarivo de la Bisección.
 
   `deriving Show` hace que este ADT sea imprimible en la terminal.
+  `deriving NFData` hace que este ADT pueda ser expandido de manera eager,
+  lo cual hace que los cálculos de la benchmark sean precisos.
+  `deriving Generic` es requerido para usar NFData
 
   Esta definición es así de sencilla gracias a que la mayoría del boiler plate
   necesario para la ejecución del método está definido en ANPI.Base y en 

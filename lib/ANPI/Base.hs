@@ -75,7 +75,7 @@ class Solucion o s | s -> o where
 
 {-
   Revisa si un valor es menor que el cero de máquina.
-  Se usa para determinar si algún denominador se anula.
+  Se usa principalmente para determinar si algún denominador se anula.
 
   Si el valor es menor que el cero de máquina, detiene el programa.
   Si no lo es, retorna el valor.
