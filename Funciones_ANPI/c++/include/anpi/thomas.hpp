@@ -25,6 +25,6 @@
  * @param d Solución al sistema de ecuaciones
  * @return vec Vector solución
  */
-arma::vec thomas(arma::mat A, arma::vec d);
+arma::vec thomas(const arma::mat &A, const arma::vec &d);
 
 #endif

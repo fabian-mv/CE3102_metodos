@@ -9,6 +9,7 @@ struct sistema
 {
 	arma::mat a;
 	arma::vec b;
+	arma::vec solucion;
 };
 
 #endif

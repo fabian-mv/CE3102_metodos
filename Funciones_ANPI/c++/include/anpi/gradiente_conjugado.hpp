@@ -21,6 +21,6 @@
  * @param b Solución al sistema de ecuaciones
  * @return vec Vector solución
  */
-arma::vec gradiente_conjugado(arma::mat A, arma::vec b);
+arma::vec gradiente_conjugado(const arma::mat &A, const arma::vec &b);
 
 #endif

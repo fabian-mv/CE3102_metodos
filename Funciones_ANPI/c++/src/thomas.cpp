@@ -1,10 +1,18 @@
 #include <armadillo>
 
+#include "anpi/ffi.h"
 #include "anpi/thomas.hpp"
+#include "anpi/sistema.hpp"
 
 using namespace arma;
 
-vec thomas(mat A, vec d){
+extern "C" double *thomas_sistema(sistema *sistema_)
+{
+	sistema_->solucion = thomas(sistema_->a, sistema_->b);
+	return sistema_->solucion.memptr();
+}
+
+vec thomas(const mat &A, const vec &d){
 
     int n = A.n_rows;
     vec zero = {0};

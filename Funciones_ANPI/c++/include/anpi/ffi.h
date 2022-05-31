@@ -9,8 +9,8 @@ extern "C"
 struct sistema *new_sistema (double *a, int filas, int columnas, double *b, int longitud);
 void            free_sistema(struct sistema *sistema);
 
-void thomas_sistema             (struct sistema *sistema);
-void gradiente_conjugado_sistema(struct sistema *sistema);
+double *thomas_sistema             (struct sistema *sistema);
+double *gradiente_conjugado_sistema(struct sistema *sistema);
 
 /**
  * Cálculo del error.
