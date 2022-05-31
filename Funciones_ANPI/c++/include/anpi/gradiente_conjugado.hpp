@@ -11,7 +11,7 @@
  * se repite:
  *   r_k = b - A x_k
  *   a_k = r_k^T r_k / t_K^T A r_k
- *   x_i+1 = x_k + a_k * r_k
+ *   x_{i+1} = x_k + a_k * r_k
  *   k = k + 1
  *   se detiene cuando
  *     k = iterMax
