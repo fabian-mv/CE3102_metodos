@@ -45,8 +45,8 @@ library
        deepseq ^>=1.4.4.0,
        hmatrix ^>=0.20.2
 
-executable run_methods
-    main-is:          RunMethods.hs
+executable Metodos
+    main-is: Metodos.hs
 
     -- Modules included in this executable, other than Main.
     -- other-modules:
@@ -63,8 +63,8 @@ executable run_methods
     hs-source-dirs:   Pruebas
     default-language: Haskell2010
 
-executable run_example
-    main-is:          RunExample.hs
+executable mosfet
+    main-is: MOSFET.hs
 
     -- Modules included in this executable, other than Main.
     -- other-modules:

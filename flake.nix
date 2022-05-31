@@ -7,7 +7,7 @@
       pkgs = import nixpkgs { inherit system; };
     in with pkgs.lib; {
       defaultPackage = self.packages."${system}".metodos;
-      defaultApp = self.apps."${system}".run_methods;
+      defaultApp = self.apps."${system}".metodos;
 
       packages.metodos = let
         version = "0.69.0.0";
@@ -50,7 +50,7 @@
           exePath = "/bin/${script}";
         };
 
-        apps = [ "run_methods" "run_example" ];
+        apps = [ "metodos" "mosfet" ];
       in listToAttrs (forEach apps (name: {
         inherit name;
         value = app name;
