@@ -1,4 +1,8 @@
-#include "anpi/thomas.h"
+#include <armadillo>
+
+#include "anpi/thomas.hpp"
+
+using namespace arma;
 
 vec thomas(mat A, vec d){
 

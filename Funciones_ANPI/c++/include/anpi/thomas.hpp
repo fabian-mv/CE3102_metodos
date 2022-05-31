@@ -1,9 +1,7 @@
-#include <iostream>
-#include <armadillo>
-#include <math.h>
+#ifndef ANPI_THOMAS_HPP
+#define ANPI_THOMAS_HPP
 
-using namespace std;
-using namespace arma;
+#include <armadillo>
 
 /**
  * El método de Thomas sirve para resolver matrices tridiagonales.
@@ -27,4 +25,6 @@ using namespace arma;
  * @param d Solución al sistema de ecuaciones
  * @return vec Vector solución
  */
-vec thomas(mat A, vec d);
+arma::vec thomas(arma::mat A, arma::vec d);
+
+#endif

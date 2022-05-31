@@ -1,4 +1,8 @@
-#include "anpi/gradiente_conjugado.h"
+#include <armadillo>
+
+#include "anpi/gradiente_conjugado.hpp"
+
+using namespace arma;
 
 vec gradiente_conjugado(mat A, vec b){
 

@@ -1,9 +1,7 @@
-#include <iostream>
-#include <armadillo>
-#include <math.h>
+#ifndef ANPI_GRADIENTE_CONJUGADO_HPP
+#define ANPI_GRADIENTE_CONJUGADO_HPP
 
-using namespace std;
-using namespace arma;
+#include <armadillo>
 
 /**
  * El método de Gradiente Conjugado consiste en lo siguiente:
@@ -23,4 +21,6 @@ using namespace arma;
  * @param b Solución al sistema de ecuaciones
  * @return vec Vector solución
  */
-vec gradiente_conjugado(mat A, vec b);
+arma::vec gradiente_conjugado(arma::mat A, arma::vec b);
+
+#endif
