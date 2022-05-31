@@ -9,10 +9,10 @@
       defaultPackage = self.packages."${system}".metodos;
       defaultApp = self.apps."${system}".metodos;
 
-      packages.metodos = let
+      packages = let
         version = "0.69.0.0";
 
-        drv =
+        metodos =
           { lib, callPackage, mkDerivation, armadillo, base
           , criterion, hmatrix, config, pretty-simple }:
           mkDerivation {
@@ -27,7 +27,7 @@
             doHaddock = false;
             doHoogle = false;
 
-            libraryPkgconfigDepends = [ armadillo (callPackage metodospp {}) ];
+            libraryPkgconfigDepends = [ armadillo self.packages."${system}".metodospp ];
             libraryHaskellDepends = [ base hmatrix ];
             executableHaskellDepends = [ base criterion hmatrix pretty-simple ];
           };
@@ -42,7 +42,10 @@
             nativeBuildInputs = [ cmake ];
             buildInputs = [ armadillo ];
           };
-      in pkgs.haskellPackages.callPackage drv {};
+      in {
+        metodos   = pkgs.haskellPackages.callPackage metodos {};
+        metodospp = pkgs.callPackage metodospp {};
+      };
 
       apps = let
         app = script: flake-utils.lib.mkApp {
