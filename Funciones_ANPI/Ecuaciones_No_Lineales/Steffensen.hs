@@ -44,10 +44,10 @@ import Funciones_ANPI.Ecuaciones_No_Lineales.Base
   Para más información acerca de foreign imports en Haskell,
   leer: https://www.haskell.org/ghc/blog/20210709-capi-usage.html
 -}
-foreign import capi "steffensen.h err_steffensen" errSteffensen
+foreign import capi "anpi/steffensen.h err_steffensen" errSteffensen
   :: FunPtr Criterio -> CDouble -> CDouble
 
-foreign import capi "steffensen.h iter_steffensen" iterSteffensen
+foreign import capi "anpi/steffensen.h iter_steffensen" iterSteffensen
   :: FunPtr Criterio -> CDouble -> CDouble
 
 

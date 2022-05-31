@@ -1,7 +1,7 @@
 #include <cmath>
 #include <cstdio>
 
-#include "steffensen.h"
+#include "anpi/steffensen.h"
 
 extern "C"
 {
@@ -9,7 +9,7 @@ extern "C"
     {
         return std::fabs(f(xk));
     }
-    
+
     double iter_steffensen(double (*f)(double), double xk)
     {
         auto fxk = f(xk);

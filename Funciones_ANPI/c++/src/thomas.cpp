@@ -1,4 +1,4 @@
-#include "thomas.h"
+#include "anpi/thomas.h"
 
 vec thomas(mat A, vec d){
 

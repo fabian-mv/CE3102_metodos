@@ -1,4 +1,4 @@
-#include "gradiente_conjugado.h"
+#include "anpi/gradiente_conjugado.h"
 
 vec gradiente_conjugado(mat A, vec b){
 
@@ -19,7 +19,6 @@ vec gradiente_conjugado(mat A, vec b){
             break;
         }
     }
-    
+
     return xk;
-  
 }
