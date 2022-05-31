@@ -6,6 +6,15 @@
 
 using namespace arma;
 
+
+/**
+ * Exporta la función gradiente_conjugado_sistema para que Haskell la pueda utilizar.
+ *
+ * Extern "C" hace que el nombre de una función en C++ no sea "mangled" por el
+ * compilador. Esto hace que Haskell pueda utilizar la función a través de un
+ * header que contiene la declaración de la función.
+ * 
+ */
 extern "C" double *gradiente_conjugado_sistema(sistema *sistema_)
 {
 	sistema_->solucion = gradiente_conjugado(sistema_->a, sistema_->b);
