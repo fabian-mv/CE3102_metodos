@@ -1,4 +1,5 @@
-{-# LANGUAGE TypeSynonymInstances, FlexibleInstances, MultiParamTypeClasses, CApiFFI #-}
+{-# LANGUAGE TypeSynonymInstances, FlexibleInstances
+  , MultiParamTypeClasses, CApiFFI, DeriveGeneric, DeriveAnyClass #-}
 
 
 {-
@@ -26,8 +27,11 @@ module Funciones_ANPI.Ecuaciones_No_Lineales.Steffensen
 , withForeign
 ) where 
 
+import GHC.Generics (Generic)
 import Foreign.C.Types
 import Foreign.Ptr
+
+import Control.DeepSeq
 
 import Funciones_ANPI.Base
 import Funciones_ANPI.Ecuaciones_No_Lineales.Base
@@ -68,7 +72,7 @@ foreign import capi "anpi/ffi.h iter_steffensen" iterSteffensen
 -}
 data Steffensen = Steffensen 
   { x_k :: Double
-  } deriving Show
+  } deriving (Show, Generic, NFData)
 
 
 {-

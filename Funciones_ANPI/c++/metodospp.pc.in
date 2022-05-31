@@ -15,4 +15,4 @@ Description: @PROJECT_DESCRIPTION@
 Version: @PROJECT_VERSION@
 Requires: armadillo
 Cflags: -I${includedir}
-Libs: -L${libdir} -lmetodospp
+Libs: -L${libdir} -lmetodospp -lstdc++

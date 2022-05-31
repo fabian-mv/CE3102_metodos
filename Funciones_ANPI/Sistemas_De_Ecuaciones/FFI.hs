@@ -3,6 +3,7 @@
 module Funciones_ANPI.Sistemas_De_Ecuaciones.FFI
 ( CSistema
 , solucionFFI
+, withCSistema
 ) where
 
 import Foreign.C.Types

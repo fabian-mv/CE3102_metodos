@@ -18,7 +18,7 @@ extern "C" sistema *new_sistema(double *a, int filas, int columnas, double *b, i
 	return new sistema
 	{
 		arma::mat(a, filas, columnas, false, true),
-		arma::vec(b, false, true)
+		arma::vec(b, longitud, false, true)
 	};
 }
 
