@@ -31,6 +31,7 @@ library
         Funciones_ANPI.Ecuaciones_No_Lineales.FalsaPosicion,
         Funciones_ANPI.Ecuaciones_No_Lineales.Steffensen,
         Funciones_ANPI.Sistemas_De_Ecuaciones.Base,
+        Funciones_ANPI.Sistemas_De_Ecuaciones.FFI,
         Funciones_ANPI.Sistemas_De_Ecuaciones.Jacobi,
         Funciones_ANPI.Sistemas_De_Ecuaciones.GaussSeidel,
         Funciones_ANPI.Sistemas_De_Ecuaciones.Thomas,
