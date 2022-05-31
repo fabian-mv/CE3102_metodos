@@ -12,6 +12,11 @@ extern "C" double *gradiente_conjugado_sistema(sistema *sistema_)
 	return sistema_->solucion.memptr();
 }
 
+ /*
+  * Aplica método iterativo de Gradiente Conjugado (ver comentario en header).
+  * Se detiene cuando se cumple la condición de error o se alcanza el límite
+  * de iteraciones.
+  */
 vec gradiente_conjugado(const mat &A, const vec &b){
 
     int n = A.n_rows;
@@ -20,13 +25,17 @@ vec gradiente_conjugado(const mat &A, const vec &b){
 
     for (int i = 0; i < n; i++)
     {
-        
+        // Aproximación actual del vector rk
         vec rk = b - A*xk;
 
+        // coeficiente alfa, utilizado en el cálculo de xk
         mat alfa_k = ((rk.t() * rk) / (rk.t() * A * rk));
 
+        // cálculo del siguiente xk
         xk = xk + (alfa_k(0,0)*rk);
 
+        // Se calcula el error aplicando la norma dos a xk
+        // si el error es menor a 1e-6, se detiene la iteración
         if (norm(rk) < 1e-6){
             break;
         }
