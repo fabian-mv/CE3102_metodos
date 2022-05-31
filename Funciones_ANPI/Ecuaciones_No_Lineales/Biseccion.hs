@@ -64,6 +64,16 @@ instance Solucion Criterio Biseccion where
     { a = if bolzano then a aprox else x
     , b = if bolzano then x       else b aprox
     } where
+    -- El bloque `where` añade estructura al programa y permite evitar la
+    -- repetición de código y aumenta claridad del programa. Aunque esta
+    -- sintaxis puede parecer extraña, es análoga a la palabra "donde", la cual
+    -- se usa comúnmente en el lenguaje matemático. Por ejemplo:
+    --     x + 0 = 1,
+    --       donde x = 1
+    -- 
+    -- Como se observa, la palabra clave `where` inicia un bloque en el cual
+    -- se declaran ecuaciones que se reemplazan en el código que está arriba
+    -- del `where`.
 
     x       = x_k aprox
     -- Dado un criterio y dos calores, determina si se cumple el teorema de Bolzano 

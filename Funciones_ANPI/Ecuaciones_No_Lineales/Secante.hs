@@ -64,6 +64,16 @@ instance Solucion Criterio Secante where
     { x_k   = x_k' - (x_k' - x_km1') * criterio x_k' / denom d
     , x_km1 = x_k'
     } where
+    -- El bloque `where` añade estructura al programa y permite evitar la
+    -- repetición de código y aumenta claridad del programa. Aunque esta
+    -- sintaxis puede parecer extraña, es análoga a la palabra "donde", la cual
+    -- se usa comúnmente en el lenguaje matemático. Por ejemplo:
+    --     x + 0 = 1,
+    --       donde x = 1
+    -- 
+    -- Como se observa, la palabra clave `where` inicia un bloque en el cual
+    -- se declaran ecuaciones que se reemplazan en el código que está arriba
+    -- del `where`.
 
     x_k'   = x_k   aprox
     x_km1' = x_km1 aprox 

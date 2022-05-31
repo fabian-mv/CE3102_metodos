@@ -34,7 +34,15 @@ import Funciones_ANPI.Ecuaciones_No_Lineales.Base
 
 
 {-
-  Importar el header de C++ de Stephensen.
+  Importar las funciones err_steffensen e iter_steffensen del
+  archivo stephensen.h.
+
+  Para esto, se usa la función `capi`, la cual hace que GHC construya un
+  archivo de C en el cual se incluye la biblioteca estandar de C y una
+  función stub que llama a la función original.
+
+  Para más información acerca de foreign imports en Haskell,
+  leer: https://www.haskell.org/ghc/blog/20210709-capi-usage.html
 -}
 foreign import capi "steffensen.h err_steffensen" errSteffensen
   :: FunPtr Criterio -> CDouble -> CDouble
@@ -71,7 +79,8 @@ data Steffensen = Steffensen
   En esenecia, esta función genera código máquina que C++ puede interpretar
   y ejecutar.
 
-  Leer: https://wiki.haskell.org/Introduction_to_IO
+  Para más información acerca de IO Haskell,
+  leer: https://wiki.haskell.org/Introduction_to_IO
 -}
 withForeign :: Criterio -> (FunPtr Criterio -> IO a) -> IO a
 withForeign criterio operacion = do
@@ -85,8 +94,8 @@ withForeign criterio operacion = do
   Se instancia una Solución utilizando el Criterio del método Steffensen.
 
   Se calcula el error en la iteración actual usando el método definido en C++.
-
-  Se calcula el error en la iteración actual usando el método definido en C++.
+  
+  Consultar la documentación de esos métodos en sus respectivos archivos.
 -}
 instance Solucion (FunPtr Criterio) Steffensen where
   error_k criterio aprox =

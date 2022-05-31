@@ -72,6 +72,17 @@ instance Solucion Sistema Pseudoinversa where
     -- de Pseudoinversa visto en clase.
     -- Esto consiste en la aplicación del criterio de este método.
     pseudo_k aprox LA.<> (_2i - a sistema LA.<> pseudo_k aprox)
+    -- El bloque `where` añade estructura al programa y permite evitar la
+    -- repetición de código y aumenta claridad del programa. Aunque esta
+    -- sintaxis puede parecer extraña, es análoga a la palabra "donde", la cual
+    -- se usa comúnmente en el lenguaje matemático. Por ejemplo:
+    --     x + 0 = 1,
+    --       donde x = 1
+    -- 
+    -- Como se observa, la palabra clave `where` inicia un bloque en el cual
+    -- se declaran ecuaciones que se reemplazan en el código que está arriba
+    -- del `where`.
+    
     where _2i = (2 *) . ident . n . a $ sistema
 
 

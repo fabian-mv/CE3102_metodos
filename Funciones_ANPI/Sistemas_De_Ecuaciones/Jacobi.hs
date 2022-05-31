@@ -60,6 +60,16 @@ instance Solucion Sistema Jacobi where
     -- Esto consiste en la aplicación del criterio de este método.
     { x_k = vector . map xi_km1 $ is
     } where
+    -- El bloque `where` añade estructura al programa y permite evitar la
+    -- repetición de código y aumenta claridad del programa. Aunque esta
+    -- sintaxis puede parecer extraña, es análoga a la palabra "donde", la cual
+    -- se usa comúnmente en el lenguaje matemático. Por ejemplo:
+    --     x + 0 = 1,
+    --       donde x = 1
+    -- 
+    -- Como se observa, la palabra clave `where` inicia un bloque en el cual
+    -- se declaran ecuaciones que se reemplazan en el código que está arriba
+    -- del `where`.
 
     (a', b', x_k') = (a sistema, b sistema, x_k aprox)
     is             = [0..n a' - 1]
