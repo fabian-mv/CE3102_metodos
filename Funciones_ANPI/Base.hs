@@ -3,7 +3,7 @@
 {-
   Este módulo contiene funciones y tipos que se utilizan en (casi) todos los
   demás métodos. Los métodos que lo usan, lo importan utilizando la palabra
-  clave `import` seguida del nombre de este módulo: `ANPI.Base`.
+  clave `import` seguida del nombre de este módulo: `Funciones_ANPI.Base`.
 -}
 
 {-
@@ -16,7 +16,7 @@
   Las funciones se escríben en minúscula y están precedidas por su firma,
   la cual describe su comportamiento.
 -}
-module ANPI.Base
+module Funciones_ANPI.Base
 ( Iteracion (..)
 , Param (..)
 , Solucion (..)

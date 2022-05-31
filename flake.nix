@@ -37,7 +37,7 @@
             pname = "metodospp";
             inherit version;
 
-            src = ./lib/c++;
+            src = ./Funciones_ANPI/c++;
 
             nativeBuildInputs = [ cmake ];
             buildInputs = [ armadillo ];

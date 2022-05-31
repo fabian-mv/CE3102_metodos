@@ -2,7 +2,7 @@
   Este módulo contiene funciones y tipos que se utilizan en (casi) todos los
   métodos relacionados a ecuaciones no lineales.
   Los métodos que lo usan, lo importan utilizando la palabra clave `import`
-  seguida del nombre de este módulo: `ANPI.Ecuaciones_No_Lineales.Base`.
+  seguida del nombre de este módulo: `Funciones_ANPI.Ecuaciones_No_Lineales.Base`.
 -}
 
 
@@ -16,7 +16,7 @@
   Las funciones se escríben en minúscula y están precedidas por su firma,
   la cual describe su comportamiento.
 -}
-module ANPI.Ecuaciones_No_Lineales.Base
+module Funciones_ANPI.Ecuaciones_No_Lineales.Base
 ( Criterio
 , Derivable (..)
 ) where

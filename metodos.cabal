@@ -23,22 +23,21 @@ extra-source-files: CHANGELOG.md
 
 library
     exposed-modules:
-        ANPI.Base,
-        ANPI.Ecuaciones_No_Lineales.Base,
-        ANPI.Ecuaciones_No_Lineales.Biseccion,
-        ANPI.Ecuaciones_No_Lineales.NewtonRaphson,
-        ANPI.Ecuaciones_No_Lineales.Secante,
-        ANPI.Ecuaciones_No_Lineales.FalsaPosicion,
-        ANPI.Ecuaciones_No_Lineales.Steffensen,
-        ANPI.Sistemas_De_Ecuaciones.Base,
-        ANPI.Sistemas_De_Ecuaciones.Jacobi,
-        ANPI.Sistemas_De_Ecuaciones.GaussSeidel,
-        ANPI.Sistemas_De_Ecuaciones.Thomas,
-        ANPI.Sistemas_De_Ecuaciones.Pseudoinversa,
-        ANPI.Sistemas_De_Ecuaciones.GradienteConjugado
+        Funciones_ANPI.Base,
+        Funciones_ANPI.Ecuaciones_No_Lineales.Base,
+        Funciones_ANPI.Ecuaciones_No_Lineales.Biseccion,
+        Funciones_ANPI.Ecuaciones_No_Lineales.NewtonRaphson,
+        Funciones_ANPI.Ecuaciones_No_Lineales.Secante,
+        Funciones_ANPI.Ecuaciones_No_Lineales.FalsaPosicion,
+        Funciones_ANPI.Ecuaciones_No_Lineales.Steffensen,
+        Funciones_ANPI.Sistemas_De_Ecuaciones.Base,
+        Funciones_ANPI.Sistemas_De_Ecuaciones.Jacobi,
+        Funciones_ANPI.Sistemas_De_Ecuaciones.GaussSeidel,
+        Funciones_ANPI.Sistemas_De_Ecuaciones.Thomas,
+        Funciones_ANPI.Sistemas_De_Ecuaciones.Pseudoinversa,
+        Funciones_ANPI.Sistemas_De_Ecuaciones.GradienteConjugado
 
    pkgconfig-depends: metodospp
-   hs-source-dirs:    lib
    default-language:  Haskell2010
 
    build-depends:

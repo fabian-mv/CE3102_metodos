@@ -4,7 +4,7 @@
 {-
   Este módulo contiene la funcionalidad del método iterativo de Steffensen.
 
-  Utiliza los módulos ANPI.Base y ANPI.Ecuaciones_No_Lineales.Base en su
+  Utiliza los módulos Funciones_ANPI.Base y Funciones_ANPI.Ecuaciones_No_Lineales.Base en su
   funcionamiento.
 
   Este módulo es diferente a los demás porque la implementación del método
@@ -21,7 +21,7 @@
   Exportación del tipo Steffensen para que pueda ser utilizado afuera
   del módulo. Tamibén se exporta withForeign.
 -}
-module ANPI.Ecuaciones_No_Lineales.Steffensen
+module Funciones_ANPI.Ecuaciones_No_Lineales.Steffensen
 ( Steffensen (..)
 , withForeign
 ) where 
@@ -29,8 +29,8 @@ module ANPI.Ecuaciones_No_Lineales.Steffensen
 import Foreign.C.Types
 import Foreign.Ptr
 
-import ANPI.Base
-import ANPI.Ecuaciones_No_Lineales.Base
+import Funciones_ANPI.Base
+import Funciones_ANPI.Ecuaciones_No_Lineales.Base
 
 
 {-
@@ -53,8 +53,8 @@ foreign import capi "steffensen.h iter_steffensen" iterSteffensen
   `deriving Generic` es requerido para usar NFData
 
   Esta definición es así de sencilla gracias a que la mayoría del boiler plate
-  necesario para la ejecución del método está definido en ANPI.Base y en 
-  ANPI.Ecuaciones_No_Lineales.Base.
+  necesario para la ejecución del método está definido en Funciones_ANPI.Base y en 
+  Funciones_ANPI.Ecuaciones_No_Lineales.Base.
 
   x_k: Valor inicial de la aproximación.
 -}

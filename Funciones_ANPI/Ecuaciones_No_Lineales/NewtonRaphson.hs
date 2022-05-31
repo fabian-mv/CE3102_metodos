@@ -3,7 +3,7 @@
 {-
   Este módulo contiene la funcionalidad del método iterativo Newton Raphson.
 
-  Utiliza los módulos ANPI.Base y ANPI.Ecuaciones_No_Lineales.Base en su
+  Utiliza los módulos Funciones_ANPI.Base y Funciones_ANPI.Ecuaciones_No_Lineales.Base en su
   funcionamiento.
 -}
 
@@ -12,7 +12,7 @@
   Exportación del tipo NewtonRaphson para que pueda ser utilizado afuera
   del módulo.
 -}
-module ANPI.Ecuaciones_No_Lineales.NewtonRaphson
+module Funciones_ANPI.Ecuaciones_No_Lineales.NewtonRaphson
 ( NewtonRaphson (..)
 ) where
 
@@ -20,8 +20,8 @@ import GHC.Generics (Generic)
 
 import Control.DeepSeq
 
-import ANPI.Base
-import ANPI.Ecuaciones_No_Lineales.Base
+import Funciones_ANPI.Base
+import Funciones_ANPI.Ecuaciones_No_Lineales.Base
 
 {-
   Tipo que describe el estado de cada iteración del método iterarivo de
@@ -33,8 +33,8 @@ import ANPI.Ecuaciones_No_Lineales.Base
   `deriving Generic` es requerido para usar NFData
 
   Esta definición es así de sencilla gracias a que la mayoría del boiler plate
-  necesario para la ejecución del método está definido en ANPI.Base y en 
-  ANPI.Ecuaciones_No_Lineales.Base.
+  necesario para la ejecución del método está definido en Funciones_ANPI.Base y en 
+  Funciones_ANPI.Ecuaciones_No_Lineales.Base.
 
   x_k: Valor inicial de la aproximación.
 -}

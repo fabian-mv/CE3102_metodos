@@ -3,7 +3,7 @@
 {-
   Este módulo contiene la funcionalidad del método iterativo Gauss Seidel.
 
-  Utiliza los módulos ANPI.Base y ANPI.Sistemas_De_Ecuaciones.Base en su
+  Utiliza los módulos Funciones_ANPI.Base y Funciones_ANPI.Sistemas_De_Ecuaciones.Base en su
   funcionamiento.
 -}
 
@@ -11,7 +11,7 @@
 {-
   Exportación del tipo GaussSeidel para que pueda ser utilizado afuera del módulo.
 -}
-module ANPI.Sistemas_De_Ecuaciones.GaussSeidel  (GaussSeidel (..))
+module Funciones_ANPI.Sistemas_De_Ecuaciones.GaussSeidel  (GaussSeidel (..))
 where
 
 import GHC.Generics (Generic)
@@ -19,8 +19,8 @@ import GHC.Generics (Generic)
 import Control.DeepSeq
 import Numeric.LinearAlgebra
 
-import ANPI.Sistemas_De_Ecuaciones.Base
-import ANPI.Base
+import Funciones_ANPI.Sistemas_De_Ecuaciones.Base
+import Funciones_ANPI.Base
 
 {-
   Tipo que describe el estado de cada iteración del método iterarivo de
@@ -32,8 +32,8 @@ import ANPI.Base
   `deriving Generic` es requerido para usar NFData
 
   Esta definición es así de sencilla gracias a que la mayoría del boiler plate
-  necesario para la ejecución del método está definido en ANPI.Base y en 
-  ANPI.Sistemas_De_Ecuaciones.Base.
+  necesario para la ejecución del método está definido en Funciones_ANPI.Base y en 
+  Funciones_ANPI.Sistemas_De_Ecuaciones.Base.
 
   x_k:  Valor inicial de la aproximación.
 -}

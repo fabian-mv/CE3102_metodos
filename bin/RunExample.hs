@@ -1,6 +1,6 @@
-import ANPI.Base
-import ANPI.Ecuaciones_No_Lineales.Base
-import ANPI.Ecuaciones_No_Lineales.Steffensen
+import Funciones_ANPI.Base
+import Funciones_ANPI.Ecuaciones_No_Lineales.Base
+import Funciones_ANPI.Ecuaciones_No_Lineales.Steffensen
 
 -- ejemplo 6.8 Razavi
 problemaEjemplo :: Double -> Double

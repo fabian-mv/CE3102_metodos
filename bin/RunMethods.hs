@@ -8,17 +8,17 @@ import Criterion.Main
 import Numeric.LinearAlgebra
 import Text.Pretty.Simple (pPrint)
 
-import ANPI.Base
-import ANPI.Ecuaciones_No_Lineales.Base
-import ANPI.Sistemas_De_Ecuaciones.Base
+import Funciones_ANPI.Base
+import Funciones_ANPI.Ecuaciones_No_Lineales.Base
+import Funciones_ANPI.Sistemas_De_Ecuaciones.Base
 
-import qualified ANPI.Ecuaciones_No_Lineales.Biseccion as Biseccion
-import qualified ANPI.Ecuaciones_No_Lineales.NewtonRaphson as NewtonRaphson
-import qualified ANPI.Ecuaciones_No_Lineales.Secante as Secante
-import qualified ANPI.Ecuaciones_No_Lineales.FalsaPosicion as FalsaPosicion
-import qualified ANPI.Sistemas_De_Ecuaciones.Jacobi as Jacobi
-import qualified ANPI.Sistemas_De_Ecuaciones.GaussSeidel as GaussSeidel
-import qualified ANPI.Sistemas_De_Ecuaciones.Pseudoinversa as Pseudoinversa
+import qualified Funciones_ANPI.Ecuaciones_No_Lineales.Biseccion as Biseccion
+import qualified Funciones_ANPI.Ecuaciones_No_Lineales.NewtonRaphson as NewtonRaphson
+import qualified Funciones_ANPI.Ecuaciones_No_Lineales.Secante as Secante
+import qualified Funciones_ANPI.Ecuaciones_No_Lineales.FalsaPosicion as FalsaPosicion
+import qualified Funciones_ANPI.Sistemas_De_Ecuaciones.Jacobi as Jacobi
+import qualified Funciones_ANPI.Sistemas_De_Ecuaciones.GaussSeidel as GaussSeidel
+import qualified Funciones_ANPI.Sistemas_De_Ecuaciones.Pseudoinversa as Pseudoinversa
 
 main :: IO ()
 main = do

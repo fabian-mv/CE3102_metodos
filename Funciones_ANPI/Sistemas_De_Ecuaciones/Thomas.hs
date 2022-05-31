@@ -1,0 +1,2 @@
+module Funciones_ANPI.Sistemas_De_Ecuaciones.Thomas
+where
