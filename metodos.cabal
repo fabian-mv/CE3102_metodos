@@ -60,7 +60,7 @@ executable run_methods
         pretty-simple ^>=4.0.0.0,
         metodos
 
-    hs-source-dirs:   bin
+    hs-source-dirs:   Pruebas
     default-language: Haskell2010
 
 executable run_example
@@ -75,5 +75,5 @@ executable run_example
         hmatrix ^>=0.20.2,
         metodos
 
-    hs-source-dirs:   bin
+    hs-source-dirs:   Pruebas
     default-language: Haskell2010
